@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.tp2domainmodel.domainmodel.model.Customer;
+package com.tp2domainmodel.domainmodel.model.CustomerPurchase;
 
 /**
  *

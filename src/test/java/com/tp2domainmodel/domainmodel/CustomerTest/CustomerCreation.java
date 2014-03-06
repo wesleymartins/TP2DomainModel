@@ -6,7 +6,7 @@
 
 package com.tp2domainmodel.domainmodel.CustomerTest;
 
-import com.tp2domainmodel.domainmodel.model.Customer.Customer;
+import com.tp2domainmodel.domainmodel.model.CustomerPurchase.Customer;
 import org.testng.Assert;
 import static org.testng.Assert.*;
 import org.testng.annotations.Test;
