@@ -4,25 +4,26 @@
  * and open the template in the editor.
  */
 
-package com.tp2domainmodel.domainmodel.model.Item;
+package com.tp2domainmodel.domainmodel.model.ItemsForSale;
 
 /**
  *
  * @author Wesley
  */
-public class PsGame implements Console{
- private String id;
+public final class XboxGame implements Console{
+
+    private String id;
     private String consoleType; 
     private String name;
     
     public String determineType() {
-         if(consoleType=="1")
-        consoleType = "Playstation 3";
+        if(consoleType=="1")
+        consoleType = "Xbox 360";
         else if(consoleType=="2")
-            consoleType = "Playstation 4";
+            consoleType = "XboxOne";
         return consoleType;
     }
-    
+
     public String getId() {
         return id;
     }
@@ -35,10 +36,10 @@ public class PsGame implements Console{
         return name;
     }
     
-     private PsGame(){}   
+     private XboxGame(){}   
     
         
- private PsGame(Builder builder){
+ private XboxGame(Builder builder){
      id = builder.id;
      
  }
@@ -62,17 +63,17 @@ public class PsGame implements Console{
             return this;
         }
         
-        public PsGame build()
+        public XboxGame build()
         {
-        return new PsGame(this);
+        return new XboxGame(this);
         }
     
 }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 79 * hash + (this.id != null ? this.id.hashCode() : 0);
+        int hash = 3;
+        hash = 17 * hash + (this.id != null ? this.id.hashCode() : 0);
         return hash;
     }
 
@@ -84,7 +85,7 @@ public class PsGame implements Console{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final PsGame other = (PsGame) obj;
+        final XboxGame other = (XboxGame) obj;
         if ((this.id == null) ? (other.id != null) : !this.id.equals(other.id)) {
             return false;
         }
@@ -92,5 +93,5 @@ public class PsGame implements Console{
     }
         
         
-    
+        
 }

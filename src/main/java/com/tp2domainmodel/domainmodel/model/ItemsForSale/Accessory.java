@@ -4,42 +4,45 @@
  * and open the template in the editor.
  */
 
-package com.tp2domainmodel.domainmodel.model.Item;
+package com.tp2domainmodel.domainmodel.model.ItemsForSale;
 
 /**
  *
  * @author Wesley
  */
-public final class XboxGame implements Console{
-
+public class Accessory implements Console{
+    
     private String id;
-    private String consoleType; 
     private String name;
+    private String type;
     
     public String determineType() {
-        if(consoleType=="1")
-        consoleType = "Xbox 360";
-        else if(consoleType=="2")
-            consoleType = "XboxOne";
-        return consoleType;
+         if(type=="1")
+        type = "Xbox 360";
+        else if(type=="2")
+            type = "XboxOne";
+        else if(type=="3")
+            type = "PC";
+        return type;
+       
     }
-
-    public String getId() {
+    
+     public String getId() {
         return id;
     }
 
     public String getConsoleType() {
-        return consoleType;
+        return type;
     }
 
     public String getName() {
         return name;
     }
     
-     private XboxGame(){}   
+     private Accessory(){}   
     
         
- private XboxGame(Builder builder){
+ private Accessory(Builder builder){
      id = builder.id;
      
  }
@@ -63,9 +66,9 @@ public final class XboxGame implements Console{
             return this;
         }
         
-        public XboxGame build()
+        public Accessory build()
         {
-        return new XboxGame(this);
+        return new Accessory(this);
         }
     
 }
@@ -73,7 +76,7 @@ public final class XboxGame implements Console{
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 17 * hash + (this.id != null ? this.id.hashCode() : 0);
+        hash = 71 * hash + (this.id != null ? this.id.hashCode() : 0);
         return hash;
     }
 
@@ -85,7 +88,7 @@ public final class XboxGame implements Console{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final XboxGame other = (XboxGame) obj;
+        final Accessory other = (Accessory) obj;
         if ((this.id == null) ? (other.id != null) : !this.id.equals(other.id)) {
             return false;
         }
@@ -93,5 +96,5 @@ public final class XboxGame implements Console{
     }
         
         
-        
+    
 }

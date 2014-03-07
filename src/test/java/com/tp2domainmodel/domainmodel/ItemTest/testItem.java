@@ -9,7 +9,7 @@ package com.tp2domainmodel.domainmodel.ItemTest;
 import static com.tp2domainmodel.domainmodel.CreditTest.testCredit.newService;
 import static com.tp2domainmodel.domainmodel.CreditTest.testCredit.service;
 import com.tp2domainmodel.domainmodel.model.CustomerPurchase.Credit;
-import com.tp2domainmodel.domainmodel.model.Item.Item;
+import com.tp2domainmodel.domainmodel.model.ItemsForSale.Item;
 import org.testng.Assert;
 import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;

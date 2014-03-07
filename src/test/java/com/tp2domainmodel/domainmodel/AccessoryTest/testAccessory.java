@@ -6,7 +6,7 @@
 
 package com.tp2domainmodel.domainmodel.AccessoryTest;
 
-import com.tp2domainmodel.domainmodel.model.Item.Accessory;
+import com.tp2domainmodel.domainmodel.model.ItemsForSale.Accessory;
 import org.testng.Assert;
 import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;

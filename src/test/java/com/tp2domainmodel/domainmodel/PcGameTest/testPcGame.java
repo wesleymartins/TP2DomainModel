@@ -6,7 +6,7 @@
 
 package com.tp2domainmodel.domainmodel.PcGameTest;
 
-import com.tp2domainmodel.domainmodel.model.Item.PcGame;
+import com.tp2domainmodel.domainmodel.model.ItemsForSale.PcGame;
 import org.testng.Assert;
 import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;

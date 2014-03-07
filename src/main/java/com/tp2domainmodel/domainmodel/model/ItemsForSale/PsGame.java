@@ -4,45 +4,41 @@
  * and open the template in the editor.
  */
 
-package com.tp2domainmodel.domainmodel.model.Item;
+package com.tp2domainmodel.domainmodel.model.ItemsForSale;
 
 /**
  *
  * @author Wesley
  */
-public class Accessory implements Console{
-    
+public class PsGame implements Console{
     private String id;
+    private String consoleType; 
     private String name;
-    private String type;
     
     public String determineType() {
-         if(type=="1")
-        type = "Xbox 360";
-        else if(type=="2")
-            type = "XboxOne";
-        else if(type=="3")
-            type = "PC";
-        return type;
-       
+         if(consoleType=="1")
+        consoleType = "Playstation 3";
+        else if(consoleType=="2")
+            consoleType = "Playstation 4";
+        return consoleType;
     }
     
-     public String getId() {
+    public String getId() {
         return id;
     }
 
     public String getConsoleType() {
-        return type;
+        return consoleType;
     }
 
     public String getName() {
         return name;
     }
     
-     private Accessory(){}   
+     private PsGame(){}   
     
         
- private Accessory(Builder builder){
+ private PsGame(Builder builder){
      id = builder.id;
      
  }
@@ -66,17 +62,17 @@ public class Accessory implements Console{
             return this;
         }
         
-        public Accessory build()
+        public PsGame build()
         {
-        return new Accessory(this);
+        return new PsGame(this);
         }
     
 }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 71 * hash + (this.id != null ? this.id.hashCode() : 0);
+        int hash = 7;
+        hash = 79 * hash + (this.id != null ? this.id.hashCode() : 0);
         return hash;
     }
 
@@ -88,7 +84,7 @@ public class Accessory implements Console{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Accessory other = (Accessory) obj;
+        final PsGame other = (PsGame) obj;
         if ((this.id == null) ? (other.id != null) : !this.id.equals(other.id)) {
             return false;
         }
