@@ -54,13 +54,15 @@ public class CashierTestCrudService {
 
     @Test
     public void testUpdate() throws Exception {
-        // THIS IS THE WRONG WAY TO DO THIS
-        // PLEASE FIX FIX FIX
-        // LEFT OUT FOR YOU TO FIGURE IT OUT
+       
 
         Cashier q1 = new Cashier.Builder("1000123").name("Sony").build();
 
-        Cashier returnCashier = crudService.merge(q1);
+         Cashier returnCashier = crudService.find(q1.getId());
+        when(crudService.find(q1.getId())).thenReturn(returnCashier);
+        Mockito.verify(crudService).find(q1.getId());
+        
+        returnCashier = crudService.merge(q1);
         when(crudService.merge(q1)).thenReturn(returnCashier);
         Mockito.verify(crudService).merge(q1);
 

@@ -54,13 +54,14 @@ public class RentalInvoiceTestCrudService {
 
     @Test
     public void testUpdate() throws Exception {
-        // THIS IS THE WRONG WAY TO DO THIS
-        // PLEASE FIX FIX FIX
-        // LEFT OUT FOR YOU TO FIGURE IT OUT
-
+        
         RentalInvoice q1 = new RentalInvoice.Builder("1000123").dateRented("12 February 2014").build();
 
-        RentalInvoice returnRentalInvoice = crudService.merge(q1);
+        RentalInvoice returnRentalInvoice = crudService.find(q1.getId());
+        when(crudService.find(q1.getId())).thenReturn(returnRentalInvoice);
+        Mockito.verify(crudService).find(q1.getId());
+        
+        returnRentalInvoice = crudService.merge(q1);
         when(crudService.merge(q1)).thenReturn(returnRentalInvoice);
         Mockito.verify(crudService).merge(q1);
 

@@ -55,13 +55,14 @@ public class XboxGameTestCrudService {
 
     @Test
     public void testUpdate() throws Exception {
-        // THIS IS THE WRONG WAY TO DO THIS
-        // PLEASE FIX FIX FIX
-        // LEFT OUT FOR YOU TO FIGURE IT OUT
-
+       
         XboxGame q1 = new XboxGame.Builder("1000123").name("Sony").build();
 
-        XboxGame returnXboxGame = crudService.merge(q1);
+        XboxGame returnXboxGame = crudService.find(q1.getId());
+        when(crudService.find(q1.getId())).thenReturn(returnXboxGame);
+        Mockito.verify(crudService).find(q1.getId());
+        
+        returnXboxGame = crudService.merge(q1);
         when(crudService.merge(q1)).thenReturn(returnXboxGame);
         Mockito.verify(crudService).merge(q1);
 

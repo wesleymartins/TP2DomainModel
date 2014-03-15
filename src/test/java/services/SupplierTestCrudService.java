@@ -54,13 +54,14 @@ public class SupplierTestCrudService {
 
     @Test
     public void testUpdate() throws Exception {
-        // THIS IS THE WRONG WAY TO DO THIS
-        // PLEASE FIX FIX FIX
-        // LEFT OUT FOR YOU TO FIGURE IT OUT
-
+       
         Supplier q1 = new Supplier.Builder("1000123").name("Sony").build();
 
-        Supplier returnSupplier = crudService.merge(q1);
+        Supplier returnSupplier = crudService.find(q1.getId());
+        when(crudService.find(q1.getId())).thenReturn(returnSupplier);
+        Mockito.verify(crudService).find(q1.getId());
+        
+        returnSupplier = crudService.merge(q1);
         when(crudService.merge(q1)).thenReturn(returnSupplier);
         Mockito.verify(crudService).merge(q1);
 

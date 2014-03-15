@@ -54,13 +54,14 @@ public class DriverTestCrudService {
 
     @Test
     public void testUpdate() throws Exception {
-        // THIS IS THE WRONG WAY TO DO THIS
-        // PLEASE FIX FIX FIX
-        // LEFT OUT FOR YOU TO FIGURE IT OUT
-
+       
         Driver q1 = new Driver.Builder("1000123").name("Sony").build();
 
-        Driver returnDriver = crudService.merge(q1);
+        Driver returnDriver = crudService.find(q1.getId());
+        when(crudService.find(q1.getId())).thenReturn(returnDriver);
+        Mockito.verify(crudService).find(q1.getId());
+        
+        returnDriver = crudService.merge(q1);
         when(crudService.merge(q1)).thenReturn(returnDriver);
         Mockito.verify(crudService).merge(q1);
 

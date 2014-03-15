@@ -54,13 +54,15 @@ public class CustomerTestCrudService {
 
     @Test
     public void testUpdate() throws Exception {
-        // THIS IS THE WRONG WAY TO DO THIS
-        // PLEASE FIX FIX FIX
-        // LEFT OUT FOR YOU TO FIGURE IT OUT
+    
 
         Customer q1 = new Customer.Builder("1000123").fName("Sony").build();
 
-        Customer returnCustomer = crudService.merge(q1);
+         Customer returnCustomer = crudService.find(q1.getId());
+        when(crudService.find(q1.getId())).thenReturn(returnCustomer);
+        Mockito.verify(crudService).find(q1.getId());
+        
+        returnCustomer = crudService.merge(q1);
         when(crudService.merge(q1)).thenReturn(returnCustomer);
         Mockito.verify(crudService).merge(q1);
 

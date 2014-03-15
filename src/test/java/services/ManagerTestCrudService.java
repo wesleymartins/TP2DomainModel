@@ -54,13 +54,14 @@ public class ManagerTestCrudService {
 
     @Test
     public void testUpdate() throws Exception {
-        // THIS IS THE WRONG WAY TO DO THIS
-        // PLEASE FIX FIX FIX
-        // LEFT OUT FOR YOU TO FIGURE IT OUT
-
+       
         Manager q1 = new Manager.Builder("1000123").name("Sony").build();
 
-        Manager returnManager = crudService.merge(q1);
+        Manager returnManager = crudService.find(q1.getId());
+        when(crudService.find(q1.getId())).thenReturn(returnManager);
+        Mockito.verify(crudService).find(q1.getId());
+        
+        returnManager = crudService.merge(q1);
         when(crudService.merge(q1)).thenReturn(returnManager);
         Mockito.verify(crudService).merge(q1);
 

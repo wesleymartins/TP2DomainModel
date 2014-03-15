@@ -54,13 +54,14 @@ public class StorePurchaseTestCrudService {
 
     @Test
     public void testUpdate() throws Exception {
-        // THIS IS THE WRONG WAY TO DO THIS
-        // PLEASE FIX FIX FIX
-        // LEFT OUT FOR YOU TO FIGURE IT OUT
-
+     
         StorePurchase q1 = new StorePurchase.Builder("1000123").time("12:34").build();
 
-        StorePurchase returnStorePurchase = crudService.merge(q1);
+        StorePurchase returnStorePurchase = crudService.find(q1.getId());
+        when(crudService.find(q1.getId())).thenReturn(returnStorePurchase);
+        Mockito.verify(crudService).find(q1.getId());
+        
+        returnStorePurchase = crudService.merge(q1);
         when(crudService.merge(q1)).thenReturn(returnStorePurchase);
         Mockito.verify(crudService).merge(q1);
 

@@ -54,13 +54,14 @@ public class PcGameTestCrudService {
 
     @Test
     public void testUpdate() throws Exception {
-        // THIS IS THE WRONG WAY TO DO THIS
-        // PLEASE FIX FIX FIX
-        // LEFT OUT FOR YOU TO FIGURE IT OUT
-
+      
         PcGame q1 = new PcGame.Builder("1000123").name("Sony").build();
 
-        PcGame returnPcGame = crudService.merge(q1);
+        PcGame returnPcGame = crudService.find(q1.getId());
+        when(crudService.find(q1.getId())).thenReturn(returnPcGame);
+        Mockito.verify(crudService).find(q1.getId());
+        
+        returnPcGame = crudService.merge(q1);
         when(crudService.merge(q1)).thenReturn(returnPcGame);
         Mockito.verify(crudService).merge(q1);
 

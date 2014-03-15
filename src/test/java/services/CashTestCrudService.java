@@ -55,13 +55,15 @@ public class CashTestCrudService {
 
     @Test
     public void testUpdate() throws Exception {
-        // THIS IS THE WRONG WAY TO DO THIS
-        // PLEASE FIX FIX FIX
-        // LEFT OUT FOR YOU TO FIGURE IT OUT
+        
 
         Cash q1 = new Cash.Builder("1000123").cashTendered(100.00).build();
+        
+         Cash returnCash = crudService.find(q1.getId());
+        when(crudService.find(q1.getId())).thenReturn(returnCash);
+        Mockito.verify(crudService).find(q1.getId());
 
-        Cash returnCash = crudService.merge(q1);
+        returnCash = crudService.merge(q1);
         when(crudService.merge(q1)).thenReturn(returnCash);
         Mockito.verify(crudService).merge(q1);
 

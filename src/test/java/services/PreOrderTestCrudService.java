@@ -54,13 +54,14 @@ public class PreOrderTestCrudService {
 
     @Test
     public void testUpdate() throws Exception {
-        // THIS IS THE WRONG WAY TO DO THIS
-        // PLEASE FIX FIX FIX
-        // LEFT OUT FOR YOU TO FIGURE IT OUT
-
+       
         PreOrder q1 = new PreOrder.Builder("1000123").status("Paid").build();
 
-        PreOrder returnPreOrder = crudService.merge(q1);
+        PreOrder returnPreOrder = crudService.find(q1.getId());
+        when(crudService.find(q1.getId())).thenReturn(returnPreOrder);
+        Mockito.verify(crudService).find(q1.getId());
+        
+        returnPreOrder = crudService.merge(q1);
         when(crudService.merge(q1)).thenReturn(returnPreOrder);
         Mockito.verify(crudService).merge(q1);
 

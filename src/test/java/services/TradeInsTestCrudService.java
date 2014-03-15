@@ -55,13 +55,14 @@ public class TradeInsTestCrudService {
 
     @Test
     public void testUpdate() throws Exception {
-        // THIS IS THE WRONG WAY TO DO THIS
-        // PLEASE FIX FIX FIX
-        // LEFT OUT FOR YOU TO FIGURE IT OUT
-
+       
         TradeItem q1 = new TradeItem.Builder("1000123").name("Sony").build();
 
-        TradeItem returnTradeItem = crudService.merge(q1);
+        TradeItem returnTradeItem = crudService.find(q1.getId());
+        when(crudService.find(q1.getId())).thenReturn(returnTradeItem);
+        Mockito.verify(crudService).find(q1.getId());
+        
+        returnTradeItem = crudService.merge(q1);
         when(crudService.merge(q1)).thenReturn(returnTradeItem);
         Mockito.verify(crudService).merge(q1);
 

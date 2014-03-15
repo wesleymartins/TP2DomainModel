@@ -54,13 +54,14 @@ public class CreditTestCrudService {
 
     @Test
     public void testUpdate() throws Exception {
-        // THIS IS THE WRONG WAY TO DO THIS
-        // PLEASE FIX FIX FIX
-        // LEFT OUT FOR YOU TO FIGURE IT OUT
-
+      
         Credit q1 = new Credit.Builder("1000123").type("Credit").build();
 
-        Credit returnCredit = crudService.merge(q1);
+         Credit returnCredit = crudService.find(q1.getId());
+        when(crudService.find(q1.getId())).thenReturn(returnCredit);
+        Mockito.verify(crudService).find(q1.getId());
+        
+        returnCredit = crudService.merge(q1);
         when(crudService.merge(q1)).thenReturn(returnCredit);
         Mockito.verify(crudService).merge(q1);
 

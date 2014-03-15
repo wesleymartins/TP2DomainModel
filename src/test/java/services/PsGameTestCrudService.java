@@ -54,13 +54,14 @@ public class PsGameTestCrudService {
 
     @Test
     public void testUpdate() throws Exception {
-        // THIS IS THE WRONG WAY TO DO THIS
-        // PLEASE FIX FIX FIX
-        // LEFT OUT FOR YOU TO FIGURE IT OUT
-
+      
         PsGame q1 = new PsGame.Builder("1000123").name("Sony").build();
 
-        PsGame returnPsGame = crudService.merge(q1);
+        PsGame returnPsGame = crudService.find(q1.getId());
+        when(crudService.find(q1.getId())).thenReturn(returnPsGame);
+        Mockito.verify(crudService).find(q1.getId());
+        
+        returnPsGame = crudService.merge(q1);
         when(crudService.merge(q1)).thenReturn(returnPsGame);
         Mockito.verify(crudService).merge(q1);
 

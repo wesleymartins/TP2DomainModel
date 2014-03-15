@@ -54,13 +54,14 @@ public class RenteeTestCrudService {
 
     @Test
     public void testUpdate() throws Exception {
-        // THIS IS THE WRONG WAY TO DO THIS
-        // PLEASE FIX FIX FIX
-        // LEFT OUT FOR YOU TO FIGURE IT OUT
-
+        
         Rentee q1 = new Rentee.Builder("1000123").name("Sony").build();
 
-        Rentee returnRentee = crudService.merge(q1);
+        Rentee returnRentee = crudService.find(q1.getId());
+        when(crudService.find(q1.getId())).thenReturn(returnRentee);
+        Mockito.verify(crudService).find(q1.getId());
+        
+        returnRentee = crudService.merge(q1);
         when(crudService.merge(q1)).thenReturn(returnRentee);
         Mockito.verify(crudService).merge(q1);
 
